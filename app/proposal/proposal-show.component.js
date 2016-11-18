@@ -9,20 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var proposal_1 = require('./proposal');
-var ProposalNewComponent = (function () {
-    function ProposalNewComponent() {
-        this.proposal = new proposal_1.Proposal;
+var router_1 = require('@angular/router');
+var ProposalShowComponent = (function () {
+    function ProposalShowComponent(route) {
+        this.route = route;
     }
-    ProposalNewComponent = __decorate([
+    ProposalShowComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.routeId = this.route.params.subscribe(function (params) {
+            _this.id = +params['id'];
+        });
+    };
+    ProposalShowComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'proposal-new',
-            templateUrl: 'proposal-new.component.html'
+            selector: 'proposal-show',
+            templateUrl: 'proposal-show.component.html'
         }), 
-        __metadata('design:paramtypes', [])
-    ], ProposalNewComponent);
-    return ProposalNewComponent;
+        __metadata('design:paramtypes', [router_1.ActivatedRoute])
+    ], ProposalShowComponent);
+    return ProposalShowComponent;
 }());
-exports.ProposalNewComponent = ProposalNewComponent;
-//# sourceMappingURL=proposal-new.component.js.map
+exports.ProposalShowComponent = ProposalShowComponent;
+//# sourceMappingURL=proposal-show.component.js.map
